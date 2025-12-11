@@ -66,6 +66,83 @@ const cards = {
             "fr-FR": "Oie",
             "en-US": "goose"
         }
+    ],
+    "fortnite": [
+        {
+            "img": "./gif_fortnite/best_mate.gif",
+            "fr-FR": "Meilleurs amis",
+            "en-US": "Best Mates"
+        },
+        {
+            "img": "./gif_fortnite/clap.gif",
+            "fr-FR": "Applaudir",
+            "en-US": "Clap"
+        },
+        {
+            "img": "./gif_fortnite/cool.gif",
+            "fr-FR": "Cool",
+            "en-US": "Cool"
+        },
+        {
+            "img": "./gif_fortnite/dab.gif",
+            "fr-FR": "Dab",
+            "en-US": "Dab"
+        },
+        {
+            "img": "./gif_fortnite/default.gif",
+            "fr-FR": "Danse par défaut",
+            "en-US": "Default Dance"
+        },
+        {
+            "img": "./gif_fortnite/disco.gif",
+            "fr-FR": "Disco",
+            "en-US": "Disco"
+        },
+        {
+            "img": "./gif_fortnite/floss.gif",
+            "fr-FR": "Floss",
+            "en-US": "Floss"
+        },
+        {
+            "img": "./gif_fortnite/fresh.gif",
+            "fr-FR": "Fresh",
+            "en-US": "Fresh"
+        },
+        {
+            "img": "./gif_fortnite/griddy.gif",
+            "fr-FR": "Griddy",
+            "en-US": "Griddy"
+        },
+        {
+            "img": "./gif_fortnite/hype.gif",
+            "fr-FR": "Hype",
+            "en-US": "Hype"
+        },
+        {
+            "img": "./gif_fortnite/orange_justice.gif",
+            "fr-FR": "Justice Orange",
+            "en-US": "Orange Justice"
+        },
+        {
+            "img": "./gif_fortnite/rock.gif",
+            "fr-FR": "Rock",
+            "en-US": "Rock"
+        },
+        {
+            "img": "./gif_fortnite/scenario.gif",
+            "fr-FR": "Scénario",
+            "en-US": "Scenario"
+        },
+        {
+            "img": "./gif_fortnite/Take_the_L.gif",
+            "fr-FR": "Prends le L",
+            "en-US": "Take the L"
+        },
+        {
+            "img": "./gif_fortnite/zombie.gif",
+            "fr-FR": "Zombie",
+            "en-US": "Zombie"
+        }
     ]
 };
 
