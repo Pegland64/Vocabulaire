@@ -24,75 +24,115 @@ const cards = {
         {
             "img": "./image_animaux/vache.png",
             "fr-FR": "Vache",
-            "en": "cow",
+            "en-US": "cow",
         },
         {
             "img": "./image_animaux/cheval.png",
             "fr-FR": "Gro chevals qui pu et qui et gro",
-            "en": "horse"
+            "en-US": "horse"
         },
         {
             "img": "./image_animaux/canard.png",
             "fr-FR": "Canard",
-            "en": "duck"
+            "en-US": "duck"
         },
         {
             "img": "./image_animaux/chat.png",
             "fr-FR": "Chat",
-            "en": "cat"
+            "en-US": "cat"
         },
         {
             "img": "./image_animaux/chevre.png",
             "fr-FR": "Chèvre",
-            "en": "goat"
+            "en-US": "goat"
         },
         {
             "img": "./image_animaux/chien.png",
             "fr-FR": "Chien",
-            "en": "dog"
+            "en-US": "dog"
         },
         {
             "img": "./image_animaux/coq.png",
             "fr-FR": "Coq",
-            "en": "rooster"
+            "en-US": "rooster"
         },
         {
             "img": "./image_animaux/mouton.png",
             "fr-FR": "Mouton",
-            "en": "sheep"
+            "en-US": "sheep"
         },
         {
             "img": "./image_animaux/oie.png",
             "fr-FR": "Oie",
-            "en": "goose"
+            "en-US": "goose"
         }
     ]
 };
 
+const languages = ["fr-FR", "en-US"];
 let language = "fr-FR";
 let theme = "animaux";
+
+const select_lang = document.createElement("select");
+
+languages.forEach((l) => {
+	let option = document.createElement("option");
+	option.value = l;
+	option.innerHTML = l;
+	select_lang.appendChild(option);
+});
+
+body.appendChild(select_lang);
+
+select_lang.addEventListener("change", (e) => {
+	language = e.target.value;
+	reload()
+})
+
+const select_theme = document.createElement("select");
+
+Object.keys(cards).forEach((l) => {
+	let option = document.createElement("option");
+	option.value = l;
+	option.innerHTML = l;
+	select_theme.appendChild(option);
+});
+
+body.appendChild(select_theme);
+
+select_theme.addEventListener("change", (e) => {
+	theme = e.target.value;
+	reload()
+})
 
 let div_cards = document.createElement("div");
 div_cards.className = "cards";
 
+function load(){
+	cards[theme].forEach((c) => {
+		let div_card = document.createElement("div");
+		div_card.className = "card";
+		div_card.addEventListener("click", () => {
+			prononcerTexte(c[language], language);
+		})
 
-cards[theme].forEach((c) => {
-	let div_card = document.createElement("div");
-	div_card.className = "card";
-	div_card.addEventListener("click", () => {
-		console.log("DIRE LE NOM DE L'ANIMAL")
-		prononcerTexte(c[language], language);
-	})
+		let name = document.createElement("p");
+		name.innerHTML = c[language]
+		div_card.appendChild(name)
 
-	let name = document.createElement("p");
-	name.innerHTML = c[language]
-	div_card.appendChild(name)
+		let img = document.createElement("img");
+		img.src = c.img;
+		div_card.appendChild(img);
 
-	let img = document.createElement("img");
-	img.src = c.img;
-	div_card.appendChild(img);
+		div_cards.appendChild(div_card);
+	});
+	body.appendChild(div_cards);
+}
 
-	div_cards.appendChild(div_card);
-});
+function reload(){
+	body.removeChild(div_cards);
+	div_cards = document.createElement("div");
+	load();
+}
 
-body.appendChild(div_cards);
+load()
