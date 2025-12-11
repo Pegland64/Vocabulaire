@@ -132,6 +132,7 @@ function load(){
 function reload(){
 	body.removeChild(div_cards);
 	div_cards = document.createElement("div");
+    div_cards.className = "cards";
 	load();
 }
 
