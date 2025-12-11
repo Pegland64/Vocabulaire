@@ -153,9 +153,20 @@ const modes = ["apprentissage", "jeu"]
 let mode = "apprentissage"
 let difficulty = 2;
 
+// Container pour le titre et le logo
+const titleContainer = document.createElement("div");
+titleContainer.className = "title-container";
+
+const logo = document.createElement("img");
+logo.src = "./images_marque/triolingo.png";
+logo.className = "logo";
+titleContainer.appendChild(logo);
+
 const title = document.createElement("h1");
 title.textContent = "Triolingo";
-body.appendChild(title);
+titleContainer.appendChild(title);
+
+body.appendChild(titleContainer);
 
 const selectorsContainer = document.createElement("div");
 selectorsContainer.className = "selectors-container";
