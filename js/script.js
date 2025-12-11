@@ -149,6 +149,8 @@ const cards = {
 const languages = ["fr-FR", "en-US"];
 let language = "fr-FR";
 let theme = "animaux";
+const modes = ["apprentissage", "jeu"]
+let mode = "apprentissage"
 
 const select_lang = document.createElement("select");
 
@@ -182,6 +184,26 @@ select_theme.addEventListener("change", (e) => {
 	reload()
 })
 
+const select_mode = document.createElement("select");
+
+modes.forEach((m) => {
+	let option = document.createElement("option");
+	option.value = m;
+	option.innerHTML = m;
+	select_mode.appendChild(option);
+});
+
+body.appendChild(select_mode);
+
+select_mode.addEventListener("change", (e) => {
+	mode = e.target.value;
+	reload()
+})
+
+let cards_container = document.createElement("div");
+cards_container.className = "cards_container";
+body.appendChild(cards_container);
+
 let div_cards = document.createElement("div");
 div_cards.className = "cards";
 
@@ -203,14 +225,67 @@ function load(){
 
 		div_cards.appendChild(div_card);
 	});
-	body.appendChild(div_cards);
+	cards_container.appendChild(div_cards);
+}
+
+function loadGame(){
+	let name;
+	const listen = document.createElement("button");
+	listen.innerHTML = "listen";
+	listen.addEventListener("click", () => {
+		prononcerTexte(name, language);
+	})
+	cards_container.appendChild(listen);
+
+	let selected_cards = [];
+	let reponse = Math.floor(Math.random() * 3);
+
+	for(let i = 0; i < 3; i++){
+		let cardId = Math.floor(Math.random() * (cards[theme].length));
+		while(selected_cards.includes(cardId)){
+			cardId = Math.floor(Math.random() * (cards[theme].length));
+		}
+		selected_cards[i] = cardId;
+		let c = cards[theme][cardId];
+		if(i === reponse){
+			name = c[language]
+		}
+
+		let div_card = document.createElement("div");
+		div_card.className = "card";
+		div_card.addEventListener("click", () => {
+			if(i === reponse){
+				div_card.className += " good-answer";
+			}else{
+				div_card.className += " bad-answer";
+			}
+		})
+
+		let img = document.createElement("img");
+		img.src = c.img;
+		div_card.appendChild(img);
+
+		div_cards.appendChild(div_card);
+	}
+	cards_container.appendChild(div_cards);
+
+	const next = document.createElement("button");
+	next.innerHTML = "next";
+	next.addEventListener("click", () => {
+		reload()
+	})
+	cards_container.appendChild(next);
 }
 
 function reload(){
-	body.removeChild(div_cards);
+	cards_container.innerHTML = '';
 	div_cards = document.createElement("div");
     div_cards.className = "cards";
-	load();
+	if(mode === "apprentissage"){
+		load();
+	}else{
+		loadGame();
+	}
 }
 
 load()
