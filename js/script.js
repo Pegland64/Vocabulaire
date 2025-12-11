@@ -24,7 +24,7 @@ const cards = {
         {
             "img": "./image_animaux/vache.png",
             "fr-FR": "Vache",
-            "en-US": "cow",
+            "en-US": "cow"
         },
         {
             "img": "./image_animaux/cheval.png",
@@ -259,7 +259,6 @@ function loadGame(){
 	diffContainer.style.marginBottom = "20px";
 
 	const diffLabel = document.createElement("label");
-	diffLabel.innerHTML = language === "fr-FR" ? "Difficulté :" : "Difficulty:";
 	diffLabel.style.fontSize = "18px";
 	diffLabel.style.fontWeight = "bold";
 	diffLabel.style.color = "#2e7d32";
@@ -318,10 +317,12 @@ function loadGame(){
 			if(i === reponse){
 				hasAnswered = true;
 				div_card.className += " good-answer";
-				prononcerTexte("Bonne réponse", language);
+				const bonneReponse = language === "fr-FR" ? "Bonne réponse" : "Correct answer";
+				prononcerTexte(bonneReponse, language);
 			}else{
 				div_card.className += " bad-answer";
-				prononcerTexte("Mauvaise réponse", language);
+				const mauvaiseReponse = language === "fr-FR" ? "Mauvaise réponse" : "Wrong answer";
+				prononcerTexte(mauvaiseReponse, language);
 				// Retirer la classe bad-answer après l'animation
 				setTimeout(() => {
 					div_card.className = "card";
