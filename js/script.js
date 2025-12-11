@@ -28,7 +28,7 @@ const cards = {
         },
         {
             "img": "./image_animaux/cheval.png",
-            "fr-FR": "Gro chevals qui et qui et gro",
+            "fr-FR": "Gro chevals qui pu et qui et gro",
             "en": "horse"
         },
         {
