@@ -22,124 +22,124 @@ function prononcerTexte(texte, langue = 'fr-FR') {
 const cards = {
     "animaux": [
         {
-            "img": "./image_animaux/vache.png",
+            "img": "./images/animaux/vache.png",
             "fr-FR": "Vache",
             "en-US": "cow"
         },
         {
-            "img": "./image_animaux/cheval.png",
+            "img": "./images/animaux/cheval.png",
             "fr-FR": "Gro chevals qui pu et qui et gro",
             "en-US": "horse"
         },
         {
-            "img": "./image_animaux/canard.png",
+            "img": "./images/animaux/canard.png",
             "fr-FR": "Canard",
             "en-US": "duck"
         },
         {
-            "img": "./image_animaux/chat.png",
+            "img": "./images/animaux/chat.png",
             "fr-FR": "Chat",
             "en-US": "cat"
         },
         {
-            "img": "./image_animaux/chevre.png",
+            "img": "./images/animaux/chevre.png",
             "fr-FR": "Chèvre",
             "en-US": "goat"
         },
         {
-            "img": "./image_animaux/chien.png",
+            "img": "./images/animaux/chien.png",
             "fr-FR": "Chien",
             "en-US": "dog"
         },
         {
-            "img": "./image_animaux/coq.png",
+            "img": "./images/animaux/coq.png",
             "fr-FR": "Coq",
             "en-US": "rooster"
         },
         {
-            "img": "./image_animaux/mouton.png",
+            "img": "./images/animaux/mouton.png",
             "fr-FR": "Mouton",
             "en-US": "sheep"
         },
         {
-            "img": "./image_animaux/oie.png",
+            "img": "./images/animaux/oie.png",
             "fr-FR": "Oie",
             "en-US": "goose"
         }
     ],
     "fortnite": [
         {
-            "img": "./gif_fortnite/best_mate.gif",
+            "img": "./images/fortnite/best_mate.gif",
             "fr-FR": "Meilleurs amis",
             "en-US": "Best Mates"
         },
         {
-            "img": "./gif_fortnite/clap.gif",
+            "img": "./images/fortnite/clap.gif",
             "fr-FR": "Applaudir",
             "en-US": "Clap"
         },
         {
-            "img": "./gif_fortnite/cool.gif",
+            "img": "./images/fortnite/cool.gif",
             "fr-FR": "Cool",
             "en-US": "Cool"
         },
         {
-            "img": "./gif_fortnite/dab.gif",
+            "img": "./images/fortnite/dab.gif",
             "fr-FR": "Dab",
             "en-US": "Dab"
         },
         {
-            "img": "./gif_fortnite/default.gif",
+            "img": "./images/fortnite/default.gif",
             "fr-FR": "Danse par défaut",
             "en-US": "Default Dance"
         },
         {
-            "img": "./gif_fortnite/disco.gif",
+            "img": "./images/fortnite/disco.gif",
             "fr-FR": "Disco",
             "en-US": "Disco"
         },
         {
-            "img": "./gif_fortnite/floss.gif",
+            "img": "./images/fortnite/floss.gif",
             "fr-FR": "Floss",
             "en-US": "Floss"
         },
         {
-            "img": "./gif_fortnite/fresh.gif",
+            "img": "./images/fortnite/fresh.gif",
             "fr-FR": "Fresh",
             "en-US": "Fresh"
         },
         {
-            "img": "./gif_fortnite/griddy.gif",
+            "img": "./images/fortnite/griddy.gif",
             "fr-FR": "Griddy",
             "en-US": "Griddy"
         },
         {
-            "img": "./gif_fortnite/hype.gif",
+            "img": "./images/fortnite/hype.gif",
             "fr-FR": "Hype",
             "en-US": "Hype"
         },
         {
-            "img": "./gif_fortnite/orange_justice.gif",
+            "img": "./images/fortnite/orange_justice.gif",
             "fr-FR": "Justice Orange",
             "en-US": "Orange Justice"
         },
         {
-            "img": "./gif_fortnite/rock.gif",
+            "img": "./images/fortnite/rock.gif",
             "fr-FR": "Rock",
             "en-US": "Rock"
         },
         {
-            "img": "./gif_fortnite/scenario.gif",
+            "img": "./images/fortnite/scenario.gif",
             "fr-FR": "Scénario",
             "en-US": "Scenario"
         },
         {
-            "img": "./gif_fortnite/Take_the_L.gif",
+            "img": "./images/fortnite/Take_the_L.gif",
             "fr-FR": "Prends le L",
             "en-US": "Take the L"
         },
         {
-            "img": "./gif_fortnite/zombie.gif",
+            "img": "./images/fortnite/zombie.gif",
             "fr-FR": "Zombie",
             "en-US": "Zombie"
         }
