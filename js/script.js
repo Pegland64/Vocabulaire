@@ -151,6 +151,7 @@ let language = "fr-FR";
 let theme = "animaux";
 const modes = ["apprentissage", "jeu"]
 let mode = "apprentissage"
+let difficulty = 2;
 
 const select_lang = document.createElement("select");
 
@@ -230,6 +231,21 @@ function load(){
 
 function loadGame(){
 	let name;
+	let diff = document.createElement("select");
+	for(let i = 0; i < cards[theme].length; i++){
+		let option = document.createElement("option");
+		option.value = i;
+		option.innerHTML = i + 1;
+		diff.appendChild(option);
+	}
+	diff.value = difficulty;
+	cards_container.appendChild(diff);
+
+	diff.addEventListener("change", (e) => {
+		difficulty = e.target.value;
+		reload();
+	})
+
 	const listen = document.createElement("button");
 	listen.innerHTML = "listen";
 	listen.addEventListener("click", () => {
@@ -240,7 +256,7 @@ function loadGame(){
 	let selected_cards = [];
 	let reponse = Math.floor(Math.random() * 3);
 
-	for(let i = 0; i < 3; i++){
+	for(let i = 0; i <= difficulty; i++){
 		let cardId = Math.floor(Math.random() * (cards[theme].length));
 		while(selected_cards.includes(cardId)){
 			cardId = Math.floor(Math.random() * (cards[theme].length));
