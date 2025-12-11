@@ -238,6 +238,9 @@ function loadGame(){
 		option.innerHTML = i + 1;
 		diff.appendChild(option);
 	}
+	if(difficulty > cards[theme].length){
+		difficulty = cards[theme].length - 1;
+	}
 	diff.value = difficulty;
 	cards_container.appendChild(diff);
 
@@ -250,11 +253,12 @@ function loadGame(){
 	listen.innerHTML = "listen";
 	listen.addEventListener("click", () => {
 		prononcerTexte(name, language);
+		console.log(name)
 	})
 	cards_container.appendChild(listen);
 
 	let selected_cards = [];
-	let reponse = Math.floor(Math.random() * 3);
+	let reponse = Math.floor(Math.random() * difficulty);
 
 	for(let i = 0; i <= difficulty; i++){
 		let cardId = Math.floor(Math.random() * (cards[theme].length));
