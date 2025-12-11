@@ -153,6 +153,13 @@ const modes = ["apprentissage", "jeu"]
 let mode = "apprentissage"
 let difficulty = 2;
 
+const title = document.createElement("h1");
+title.textContent = "Triolingo";
+body.appendChild(title);
+
+const selectorsContainer = document.createElement("div");
+selectorsContainer.className = "selectors-container";
+
 const select_lang = document.createElement("select");
 
 languages.forEach((l) => {
@@ -162,7 +169,7 @@ languages.forEach((l) => {
 	select_lang.appendChild(option);
 });
 
-body.appendChild(select_lang);
+selectorsContainer.appendChild(select_lang);
 
 select_lang.addEventListener("change", (e) => {
 	language = e.target.value;
@@ -178,7 +185,7 @@ Object.keys(cards).forEach((l) => {
 	select_theme.appendChild(option);
 });
 
-body.appendChild(select_theme);
+selectorsContainer.appendChild(select_theme);
 
 select_theme.addEventListener("change", (e) => {
 	theme = e.target.value;
@@ -194,7 +201,8 @@ modes.forEach((m) => {
 	select_mode.appendChild(option);
 });
 
-body.appendChild(select_mode);
+selectorsContainer.appendChild(select_mode);
+body.appendChild(selectorsContainer);
 
 select_mode.addEventListener("change", (e) => {
 	mode = e.target.value;
@@ -231,6 +239,21 @@ function load(){
 
 function loadGame(){
 	let name;
+
+	// Container pour la difficulté
+	const diffContainer = document.createElement("div");
+	diffContainer.style.display = "flex";
+	diffContainer.style.alignItems = "center";
+	diffContainer.style.gap = "10px";
+	diffContainer.style.marginBottom = "20px";
+
+	const diffLabel = document.createElement("label");
+	diffLabel.innerHTML = language === "fr-FR" ? "Difficulté :" : "Difficulty:";
+	diffLabel.style.fontSize = "18px";
+	diffLabel.style.fontWeight = "bold";
+	diffLabel.style.color = "#2e7d32";
+	diffContainer.appendChild(diffLabel);
+
 	let diff = document.createElement("select");
 	for(let i = 0; i < cards[theme].length; i++){
 		let option = document.createElement("option");
@@ -242,15 +265,17 @@ function loadGame(){
 		difficulty = cards[theme].length - 1;
 	}
 	diff.value = difficulty;
-	cards_container.appendChild(diff);
+	diffContainer.appendChild(diff);
+	cards_container.appendChild(diffContainer);
 
 	diff.addEventListener("change", (e) => {
 		difficulty = e.target.value;
 		reload();
 	})
 
+	let hasAnswered = false;
 	const listen = document.createElement("button");
-	listen.innerHTML = "listen";
+	listen.innerHTML = language === "fr-FR" ? "Écouter" : "Listen";
 	listen.addEventListener("click", () => {
 		prononcerTexte(name, language);
 		console.log(name)
@@ -258,7 +283,8 @@ function loadGame(){
 	cards_container.appendChild(listen);
 
 	let selected_cards = [];
-	let reponse = Math.floor(Math.random() * difficulty);
+    let reponse = Math.floor(Math.random() * difficulty);
+	let allCards = [];
 
 	for(let i = 0; i <= difficulty; i++){
 		let cardId = Math.floor(Math.random() * (cards[theme].length));
@@ -273,11 +299,22 @@ function loadGame(){
 
 		let div_card = document.createElement("div");
 		div_card.className = "card";
+		allCards.push({element: div_card, isCorrect: i === reponse});
+
 		div_card.addEventListener("click", () => {
+			if(hasAnswered) return;
+
 			if(i === reponse){
+				hasAnswered = true;
 				div_card.className += " good-answer";
+				prononcerTexte("Bonne réponse", language);
 			}else{
 				div_card.className += " bad-answer";
+				prononcerTexte("Mauvaise réponse", language);
+				// Retirer la classe bad-answer après l'animation
+				setTimeout(() => {
+					div_card.className = "card";
+				}, 500);
 			}
 		})
 
@@ -290,7 +327,7 @@ function loadGame(){
 	cards_container.appendChild(div_cards);
 
 	const next = document.createElement("button");
-	next.innerHTML = "next";
+	next.innerHTML = language === "fr-FR" ? "Suivant" : "Next";
 	next.addEventListener("click", () => {
 		reload()
 	})
